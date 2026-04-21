@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="五子棋网页游戏 - 双人对战，经典棋类游戏">
+    <meta name="keywords" content="五子棋,网页游戏,双人对战,棋类游戏">
+    <meta name="author" content="AI Assistant">
+    <title>五子棋游戏 | 经典双人对战</title>
+
+    <!-- 样式表 -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 标题 -->
+        <header class="header">
+            <h1 class="title">五子棋</h1>
+            <p class="subtitle">经典双人对战游戏</p>
+        </header>
+
+        <!-- 游戏控制栏 -->
+        <section class="game-controls" aria-label="游戏控制">
+            <div class="player-info">
+                <span class="player-label">当前玩家:</span>
+                <span id="currentPlayer" class="player-value">● 黑棋</span>
+            </div>
+
+            <div class="button-group">
+                <button id="undoBtn" class="btn btn-secondary" aria-label="悔棋">
+                    <span class="btn-icon">↩</span>
+                    <span class="btn-text">悔棋</span>
+                </button>
+                <button id="restartBtn" class="btn btn-primary" aria-label="重新开始">
+                    <span class="btn-icon">↻</span>
+                    <span class="btn-text">重新开始</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 棋盘区域 -->
+        <main class="board-container" aria-label="棋盘">
+            <canvas id="gameBoard" class="game-board">
+                您的浏览器不支持 Canvas，请升级浏览器。
+            </canvas>
+        </main>
+
+        <!-- 游戏说明 -->
+        <footer class="game-instructions">
+            <h3>游戏说明</h3>
+            <ul>
+                <li>黑棋先行，双方轮流落子</li>
+                <li>五子连珠（横、竖、斜、反斜）即获胜</li>
+                <li>点击棋盘交叉点落子</li>
+                <li>可使用悔棋功能撤销上一步</li>
+            </ul>
+        </footer>
+    </div>
+
+    <!-- 游戏脚本 -->
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

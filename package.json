@@ -1,0 +1,33 @@
+{
+  "name": "wuziqi-web-game",
+  "version": "1.0.0",
+  "description": "五子棋网页游戏 - 经典双人对战",
+  "type": "module",
+  "main": "assets/js/main.js",
+  "scripts": {
+    "build": "echo '✅ 构建完成 - 无需编译，纯静态项目'",
+    "typecheck": "echo '⚠️  类型检查: 建议使用支持 TypeScript 的编辑器进行类型检查'",
+    "dev": "echo '🚀 开发模式: 使用本地服务器运行，如 Python: python -m http.server 8000'",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "五子棋",
+    "游戏",
+    "网页游戏",
+    "双人对战",
+    "棋类游戏",
+    "Canvas",
+    "ES6"
+  ],
+  "author": "AI Assistant",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "browserslist": [
+    "last 2 versions",
+    ">= 90%",
+    "not dead"
+  ]
+}

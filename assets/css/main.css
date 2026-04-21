@@ -1,0 +1,348 @@
+/**
+ * 五子棋游戏样式表
+ * 采用现代 CSS3 特性，支持响应式布局
+ */
+
+/* ==================== 全局样式重置 ==================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================== 根样式变量 ==================== */
+:root {
+    /* 颜色变量 */
+    --color-bg-start: #667eea;
+    --color-bg-end: #764ba2;
+    --color-white: #ffffff;
+    --color-text-primary: #333333;
+    --color-text-secondary: #666666;
+    --color-button-primary: #667eea;
+    --color-button-primary-hover: #764ba2;
+    --color-button-secondary: #6c757d;
+    --color-button-secondary-hover: #5a6268;
+    --color-button-disabled: #cccccc;
+    --color-shadow: rgba(0, 0, 0, 0.2);
+
+    /* 尺寸变量 */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* 圆角变量 */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* 过渡变量 */
+    --transition-fast: 150ms ease-out;
+    --transition-normal: 200ms ease-in-out;
+    --transition-slow: 300ms ease-out;
+}
+
+/* ==================== 页面基础样式 ==================== */
+html {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+    color: var(--color-text-primary);
+}
+
+/* ==================== 主容器样式 ==================== */
+.container {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px var(--color-shadow);
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* ==================== 标题区域 ==================== */
+.header {
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* ==================== 游戏控制栏 ==================== */
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: #f5f5f5;
+    border-radius: var(--radius-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 1.125rem;
+}
+
+.player-label {
+    color: var(--color-text-secondary);
+}
+
+.player-value {
+    font-weight: 700;
+    color: var(--color-button-primary);
+}
+
+.button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* ==================== 按钮样式 ==================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    user-select: none;
+}
+
+.btn:focus {
+    outline: 2px solid var(--color-button-primary);
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--color-button-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--color-button-secondary);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-button-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.btn-secondary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* ==================== 棋盘容器 ==================== */
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg);
+    background: #f5f5f5;
+    border-radius: var(--radius-md);
+    overflow: auto;
+}
+
+.game-board {
+    display: block;
+    border: 3px solid #8B4513;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px var(--color-shadow);
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.game-board:hover {
+    transform: scale(1.01);
+}
+
+/* ==================== 游戏说明 ==================== */
+.game-instructions {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: #f9f9f9;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-button-primary);
+}
+
+.game-instructions h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.game-instructions ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.game-instructions li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.game-instructions li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-button-primary);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* ==================== 响应式设计 ==================== */
+
+/* 平板设备 */
+@media (max-width: 992px) {
+    .container {
+        padding: var(--spacing-lg);
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .game-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button-group {
+        justify-content: center;
+    }
+
+    .player-info {
+        justify-content: center;
+    }
+}
+
+/* 手机设备 */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+
+    .container {
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 0.875rem;
+    }
+
+    .game-controls {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .player-info {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.875rem;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .btn-icon {
+        font-size: 1.125rem;
+    }
+
+    .board-container {
+        padding: var(--spacing-sm);
+    }
+
+    .game-instructions {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .game-instructions li {
+        font-size: 0.75rem;
+        padding-left: var(--spacing-md);
+    }
+}
+
+/* ==================== 打印样式 ==================== */
+@media print {
+    body {
+        background: white;
+    }
+
+    .container {
+        box-shadow: none;
+    }
+
+    .game-controls,
+    .game-instructions {
+        display: none;
+    }
+}
