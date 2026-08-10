@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "weather": {
+      "command": "python",
+      "args": [
+        "/Users/qian/Document_Management/Test_Space/weather_gd/weather.py"
+      ]
+    }
+  }
+}

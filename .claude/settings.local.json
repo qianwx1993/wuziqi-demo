@@ -3,7 +3,18 @@
     "allow": [
       "Bash(git init *)",
       "Bash(git branch *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Bash(claude mcp *)",
+      "Bash(find *)",
+      "Bash(env)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "weather"
+  ]
 }
